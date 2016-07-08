@@ -1,0 +1,7 @@
+<rest-api xmlns="http://marklogic.com/rest-api">
+    <name>police-calls</name>
+    <group>Default</group>
+    <database>police-calls-DB</database>
+    <modules-database>police-calls-Mod</modules-database>
+    <port>7004</port>
+</rest-api>
