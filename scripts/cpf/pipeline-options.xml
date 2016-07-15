@@ -1,0 +1,27 @@
+<pipeline xmlns="http://marklogic.com/cpf/pipelines">
+<pipeline-name>Call Format Pipeline</pipeline-name>
+<pipeline-description>Pipeline to Reformat Police Calls</pipeline-description>
+<success-action>
+  <module>/MarkLogic/cpf/actions/success-action.xqy</module>
+</success-action>
+<failure-action>
+  <module>/MarkLogic/cpf/actions/failure-action.xqy</module>
+</failure-action>
+<state-transition>
+  <annotation>
+    When a document containing ‘book' as a root element is created, 
+    add a ‘copyright' statement.
+  </annotation>
+  <state>http://marklogic.com/states/initial</state>
+  <on-success>http://marklogic.com/states/done</on-success>
+  <on-failure>http://marklogic.com/states/error</on-failure>
+  <execute>
+    <condition>
+      <module></module>
+    </condition>
+    <action>
+      <module>add-copyright.xqy</module>
+    </action>
+  </execute>
+</state-transition>
+</pipeline>
