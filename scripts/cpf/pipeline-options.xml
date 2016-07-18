@@ -9,18 +9,19 @@
 </failure-action>
 <state-transition>
   <annotation>
-    When a document containing ‘book' as a root element is created, 
-    add a ‘copyright' statement.
   </annotation>
-  <state>http://marklogic.com/states/initial</state>
+  <state>http://marklogic.com/states/created</state>
   <on-success>http://marklogic.com/states/done</on-success>
   <on-failure>http://marklogic.com/states/error</on-failure>
+    <default-action>
+        <module>reformat-call.xqy</module>
+    </default-action>
   <execute>
     <condition>
       <module></module>
     </condition>
     <action>
-      <module>add-copyright.xqy</module>
+      <module>reformat-call.xqy</module>
     </action>
   </execute>
 </state-transition>

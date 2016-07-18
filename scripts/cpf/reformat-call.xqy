@@ -61,9 +61,12 @@ declare function local:createReformattedDoc($doc)
 if (cpf:check-transition($cpf:document-uri,$cpf:transition)) then try
 {
     let $doc := fn:doc( $cpf:document-uri )
-    return createReformattedDoc($doc), xdmp:document-delete($document-uri))) 
-    xdmp:log( "Created reformatted document, deleted original" ),
-    cpf:success( $cpf:document-uri, $cpf:transition, () )
+    return (createReformattedDoc($doc),
+            xdmp:document-delete($document-uri),
+            xdmp:log( "Created reformatted document, deleted original" ),
+            cpf:success( $cpf:document-uri, $cpf:transition,
+            ()
+            )
 }
 catch ($e) {
     cpf:failure( $cpf:document-uri, $cpf:transition, $e, () )
