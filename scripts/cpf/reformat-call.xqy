@@ -1,9 +1,7 @@
 xquery version "1.0-ml";
 import module namespace cpf = "http://marklogic.com/cpf" at "/MarkLogic/cpf/cpf.xqy";
-declare variable $cpf:document-uri as xs:string external;
-declare variable $cpf:transition as node() external;
-
-(: :)
+import module namespace json = "http://marklogic.com/xdmp/json"
+    at "/MarkLogic/json/json.xqy";
 
 (: example string
 "{"address":"100 S HENRY ST","city":"MADISON","state":"WI","zip":""}"
@@ -26,6 +24,7 @@ declare function local:transformDoc($docs)
   return 
   (<call type="object">{$doc/row/text()}
     <incident_number type="integer">{$doc/row/incident_number/text()}</incident_number>
+    <id type="integer">{fn:string($doc/row/@_id)}</id>
     <type type="string">{$doc/row/type/text()}</type>
     <description type="string">{$doc/row/description/text()}</description>
     <date_time type="date_time">{$doc/row/date_time/text()}</date_time>
@@ -51,22 +50,30 @@ declare function local:createReformattedDoc($doc)
     let $newDoc := local:transformDoc($doc)
     let $oldUriTokens := fn:tokenize($oldUri, "/")
     let $newUri := fn:concat("/calls/call/", fn:replace($oldUriTokens[3],"-0-","0-"))
-    return ($newUri,
-            $newDoc
-            )
-    ;
-}
+    return (xdmp:node-replace(fn:doc($oldUri)/*,
+                             $newDoc
+                             )
+    )
+};
+
+(:
+declare function local:createReformattedDoc($doc)
+{
+  return (xdmp:log("success"))
+};:)
+
+declare variable $cpf:document-uri as xs:string external;
+declare variable $cpf:transition as node() external;
 
 (: Determine the transition type in the pipeline :)
 if (cpf:check-transition($cpf:document-uri,$cpf:transition)) then try
 {
-    let $doc := fn:doc( $cpf:document-uri )
-    return (createReformattedDoc($doc),
-            xdmp:document-delete($document-uri),
-            xdmp:log( "Created reformatted document, deleted original" ),
-            cpf:success( $cpf:document-uri, $cpf:transition,
-            ()
-            )
+    let $message := "successful run test.xqy"
+    let $doc := $cpf:document-uri
+    return ( 
+            local:createReformattedDoc($doc),
+            cpf:success( $cpf:document-uri, $cpf:transition, () )
+    )
 }
 catch ($e) {
     cpf:failure( $cpf:document-uri, $cpf:transition, $e, () )

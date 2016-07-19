@@ -1,6 +1,7 @@
 <pipeline xmlns="http://marklogic.com/cpf/pipelines">
 <pipeline-name>Call Format Pipeline</pipeline-name>
-<pipeline-description>Pipeline to Reformat Police Calls</pipeline-description>
+<pipeline-description>Pipeline to reformat police call row nodes</pipeline-description>
+
 <success-action>
   <module>/MarkLogic/cpf/actions/success-action.xqy</module>
 </success-action>
@@ -10,15 +11,16 @@
 <state-transition>
   <annotation>
   </annotation>
-  <state>http://marklogic.com/states/created</state>
+  <state>http://marklogic.com/states/initial</state>
   <on-success>http://marklogic.com/states/done</on-success>
   <on-failure>http://marklogic.com/states/error</on-failure>
-    <default-action>
-        <module>reformat-call.xqy</module>
-    </default-action>
   <execute>
     <condition>
-      <module></module>
+      <module>/MarkLogic/cpf/actions/namespace-condition.xqy</module>
+      <options xmlns="/MarkLogic/cpf/actions/namespace-condition.xqy">
+        <root-element>row</root-element>
+        <namespace/>
+      </options>
     </condition>
     <action>
       <module>reformat-call.xqy</module>
