@@ -1,0 +1,32 @@
+{
+  "pipeline-name": "Call Format Pipeline",
+  "pipeline-description": "Pipeline to reformat police call row node",
+  "success-action": {
+    "module": "/MarkLogic/cpf/actions/success-action.xqy"
+  },
+  "failure-action": {
+    "module": "/Marklogic/cpf/actions/failure-action.xqy"
+  },
+  "state-transition": [
+    {
+      "annotation": "",
+      "state": "http://marklogic.com/states/initial",
+      "on-success": "http://marklogic.com/states/converted",
+      "on-failure": "http://marklogic.com/states/error",
+      "priority": 100,
+      "execute": [
+        {
+          "condition": {
+            "module": "/Marklogic/cpf/actions/mimetype-condition.xqy",
+            "options": {
+              "mimetype": "application/xml"
+            }
+          },
+          "action": {
+            "module": "reformat-call.xqy"
+          }
+        }
+      ]
+    }
+  ]
+}
