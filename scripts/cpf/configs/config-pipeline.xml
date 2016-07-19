@@ -1,0 +1,30 @@
+<pipeline xmlns="http://marklogic.com/cpf/pipelines">
+<pipeline-name>Row Reformatting</pipeline-name>
+<pipeline-description>Pipeline to reformat police call row nodes</pipeline-description>
+
+<success-action>
+  <module>/MarkLogic/cpf/actions/success-action.xqy</module>
+</success-action>
+<failure-action>
+  <module>/MarkLogic/cpf/actions/failure-action.xqy</module>
+</failure-action>
+<state-transition>
+  <annotation>
+  </annotation>
+  <state>http://marklogic.com/states/initial</state>
+  <on-success>http://marklogic.com/states/done</on-success>
+  <on-failure>http://marklogic.com/states/error</on-failure>
+  <execute>
+    <condition>
+      <module>/MarkLogic/cpf/actions/namespace-condition.xqy</module>
+      <options xmlns="/MarkLogic/cpf/actions/namespace-condition.xqy">
+        <root-element>row</root-element>
+        <namespace/>
+      </options>
+    </condition>
+    <action>
+      <module>reformat-call.xqy</module>
+    </action>
+  </execute>
+</state-transition>
+</pipeline>

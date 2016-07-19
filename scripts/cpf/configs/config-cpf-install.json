@@ -1,0 +1,7 @@
+{
+    "domain-name": "police-calls-domain",
+    "restart-user-name": "admin",
+    "eval-module": "police-calls-Mod",
+    "eval-root": "/load/",
+    "conversion-enabled": false
+}

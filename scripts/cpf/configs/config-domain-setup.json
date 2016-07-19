@@ -1,0 +1,10 @@
+{
+    "domain-name": "police-calls-domain",
+    "description": "Status change handling and document conversion",
+    "scope": "directory",
+    "uri": "/",
+    "depth": "infinity",
+    "eval-module": "police-calls-Mod",
+    "eval-root": "/load/",
+    "pipeline":["Status Change Handling","Row Reformatting"]
+}
