@@ -5,3 +5,4 @@ curl --anyauth \
 -d@"./myRestConfig.xml" -i \
 -H "Content-type:application/xml" \
 http://localhost:8002/v1/rest-apis
+
