@@ -34,8 +34,8 @@ declare function local:transformDoc($docs)
       <state type="string">{$address/state/text()}</state>
       <zip type="integer">{$address/zip/text()}</zip>
       <geo type="object">
-        <lat type="float">{fn:string($doc/row/address/@latitude)}</lat>
-        <lng type="float">{fn:string($doc/row/address/@longitude)}</lng>
+        <lat type="float">{fn:number($doc/row/address/@latitude)}</lat>
+        <lng type="float">{fn:number($doc/row/address/@longitude)}</lng>
       </geo>
     </address>
   </call>)
