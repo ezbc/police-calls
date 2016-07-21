@@ -1,4 +1,27 @@
 
+echo
+echo Deleting police-calls-DB...
+
+curl --anyauth \
+--user admin:admin \
+-X DELETE \
+http://localhost:8002/manage/v2/databases/police-calls-DB
+
+echo
+echo Deleting police-calls-Triggers...
+
+curl --anyauth \
+--user admin:admin \
+-X DELETE \
+http://localhost:8002/manage/v2/databases/police-calls-Triggers
+
+echo
+echo Deleting modules...
+
+curl --anyauth \
+--user admin:admin \
+-X DELETE \
+http://localhost:8002/manage/v2/databases/police-calls-Mod
 
 echo
 echo Deleting forests for DB and Modules...
@@ -28,19 +51,4 @@ for ((i=1; i<=3; i++)) do
     http://localhost:8002/manage/v2/forests/police-calls-Triggers-0$i?level=full
 done
 
-echo
-echo Deleting DB...
-
-curl --anyauth \
---user admin:admin \
--X DELETE \
-http://localhost:8002/manage/v2/databases/police-calls-DB
-
-echo
-echo Deleting modules...
-
-curl --anyauth \
---user admin:admin \
--X DELETE \
-http://localhost:8002/manage/v2/databases/police-calls-Mod
 

@@ -2,4 +2,5 @@
 curl --anyauth \
 -X DELETE -i \
 --user admin:admin \
-http://localhost:8002/v1/rest-apis/test-uk-health
+http://localhost:8002/v1/rest-apis/police-calls
+
