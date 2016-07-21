@@ -8,4 +8,6 @@ http://localhost:8002/manage/v2/databases/police-calls-DB/properties
 curl -X DELETE --anyauth -u admin:admin --header "Content-Type:application/json" \
 http://localhost:8002/manage/v2/databases/police-calls-Triggers
 
-
+# Remove the triggers DB
+curl -X DELETE --anyauth -u admin:admin --header "Content-Type:application/json" \
+http://localhost:8002/manage/v2/databases/police-calls-DB/domains/police-calls-domain
