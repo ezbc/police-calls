@@ -1,14 +1,14 @@
 {"range-element-index":
     [
        {"scalar-type": "dateTime",
-        "namespace-uri" : "http://marklogic.com/xdmp/dls",
+        "namespace-uri" : "",
         "localname": ["date_time"],
         "collation": "",
         "range-value-positions": true,
         "invalid-values": "reject"
         },
        {"scalar-type": "int",
-        "namespace-uri" : "http://marklogic.com/xdmp/dls",
+        "namespace-uri" : "",
         "localname": ["id"],
         "collation": "",
         "range-value-positions": false,
