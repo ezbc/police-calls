@@ -7,13 +7,6 @@
         "range-value-positions": true,
         "invalid-values": "reject"
         },
-       {"scalar-type": "int",
-        "namespace-uri" : "",
-        "localname": ["id"],
-        "collation": "",
-        "range-value-positions": false,
-        "invalid-values": "reject"
-        },
        {"scalar-type": "string",
         "namespace-uri" : "",
         "localname": ["description"],
