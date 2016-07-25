@@ -1,0 +1,11 @@
+{
+   "task-enabled":true, 
+   "task-path":"/load/get-recent-data.xqy", 
+   "task-root":"/", 
+   "task-type":"daily", 
+   "task-period":1, 
+   "task-start-time":"13:11:00-08:00", 
+   "task-database":"police-calls-DB", 
+   "task-modules":"police-calls-Mod", 
+   "task-user":"admin"
+}
