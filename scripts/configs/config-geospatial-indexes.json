@@ -1,0 +1,14 @@
+{"geospatial-element-pair-index":
+    [
+       {"parent-namespace-uri" : "",
+        "parent-localname": ["geo"],
+        "latitude-namespace-uri": "",
+        "latitude-localname": ["lat"],
+        "longitude-namespace-uri": "",
+        "longitude-localname": ["lng"],
+        "coordinate-system": "wgs84",
+        "range-value-positions": true,
+        "invalid-values": "reject"
+        }
+  ]
+}
