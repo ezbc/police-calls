@@ -18,5 +18,5 @@ mlcp.sh import \
 -input_file_path $file \
 -input_file_type aggregates \
 -aggregate_record_element row \
--output_uri_replace "^,'/calls/call/'" \
+-output_uri_replace "^,'/calls/'" \
 -uri_id @_uuid
