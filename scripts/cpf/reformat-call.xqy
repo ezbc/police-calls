@@ -46,11 +46,10 @@ declare function local:createReformattedDoc($doc)
 {
     for $doc in fn:doc($doc)
     let $oldDoc := $doc
-    let $oldUri := fn:document-uri($oldDoc)
+    let $uri := fn:document-uri($oldDoc)
     let $newDoc := local:transformDoc($doc)
-    let $oldUriTokens := fn:tokenize($oldUri, "/")
-    let $newUri := fn:concat("/calls/call/", fn:replace($oldUriTokens[3],"-0-","0-"))
-    return (xdmp:node-replace(fn:doc($oldUri)/*,
+    let $oldUriTokens := fn:tokenize($uri, "/")
+    return (xdmp:node-replace(fn:doc($uri)/*,
                              $newDoc
                              )
     )
